@@ -1,6 +1,6 @@
-name: horizontal-rule
+name: docx-horizontal-rule
 author: Matt Capaldi
 version: 0.0.1
 contributes:
   filters:
-    - horizontal-rule.lua
+    - docx-horizontal-rule.lua
