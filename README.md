@@ -12,7 +12,7 @@ and
 ``` yaml
 ---
 filters:
-  - horizontal-rule
+  - docx-horizontal-rule
 ---
 ```
 
