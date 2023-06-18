@@ -7,7 +7,7 @@ local horizontallinerule = [[<w:p>
       <w:ind w:firstLine="0"/>
       <w:jc w:val="center"/>
     <w:pBdr>
-      <w:bottom w:val="single" w:sz="4" w:color="000000"/>
+      <w:bottom w:val="single" w:color="000000"/>
     </w:pBdr>
   </w:pPr>
   <w:r>
