@@ -3,11 +3,11 @@ A simple Lua filter that converts .docx horizontal rule output from the default 
 
 To use this filter 
 
-  -1 ensure the Horizontal-Rule file is in your _extensions
+  1. ensure the Horizontal-Rule file is in your _extensions
 
 and
 
-  -2 add the following to your yaml header
+  2. add the following to your yaml header
   
 ``` yaml
 ---
