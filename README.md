@@ -18,14 +18,14 @@ filters:
 
 If you wish to customize the line generated, you can edit line 10 of the .lua script
 
-```      <w:bottom w:val="single" w:sz="4" w:color="000000"/>```
+```      <w:bottom w:val="single" w:color="000000"/>```
 
 For example, to have the line be red and not black it would become
 
-```      <w:bottom w:val="single" w:sz="4" w:color="FF0000"/>```
+```      <w:bottom w:val="single" w:color="FF0000"/>```
 
 Or, to make it a double line it would become
 
-```      <w:bottom w:val="double" w:sz="4" w:color="000000"/>```
+```      <w:bottom w:val="double" w:color="000000"/>```
 
 I wrote this little tool to help format my Quarto CV, but thought it might be useful for the wider community!
