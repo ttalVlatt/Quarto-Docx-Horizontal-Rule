@@ -3,8 +3,7 @@ title: "Testing"
 format: docx
 filters:
   - docx-horizontal-rule
-docx-hr-style: single
-docx-hr-color: "00FF00"
+docxhrcolor: "FF69B4"
 ---
 
 Let's see if the filter is working properly
