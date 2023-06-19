@@ -1,0 +1,14 @@
+---
+title: "Testing"
+format: docx
+filters:
+  - docx-horizontal-rule
+docx-hr-style: single
+docx-hr-color: "00FF00"
+---
+
+Let's see if the filter is working properly
+
+---
+
+Is that changing with the options we set?
