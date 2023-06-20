@@ -3,7 +3,13 @@ A simple Lua filter that converts .docx horizontal rule output from the default 
 
 ### To use this filter 
 
-  1. Ensure the Docx-Horizontal-Rule file is in your _extensions folder
+  1. Ensure the docx-horizontal-rule extension is in your _extensions folder
+
+  You can install the filter directly in the terminal with
+    
+  `quarto install extension ttalVlatt/Quarto-Docx-Horizontal-Rule`
+
+  *This assumes your terminal is set to the same directory as your project/.qmd script*
 
   2. Add the horizontal rule to your markdown
 
@@ -13,7 +19,7 @@ Insert horizontal rule below here
 There is my horizontal rule
 ```
 
-  5. Add the following to your YAML header
+  3. Add the following to your YAML header
   
 ``` yaml
 ---
@@ -24,7 +30,7 @@ filters:
 ---
 ```
 
-  3. To customize the line, use the following *optional* fields in your YAML header
+  4. To customize the line, use the following *optional* fields in your YAML header
   
 ``` yaml
 ---
@@ -38,7 +44,7 @@ docx-hr-width: takes a numeric value for the width of the line in 20th of a ft p
 ---
 ```
 
-  4. Here are a few examples of the output
+  5. Here are a few examples of the output
 
 **Single 0.5pt line in black (the default output if no optional fields are supplied)**
     
