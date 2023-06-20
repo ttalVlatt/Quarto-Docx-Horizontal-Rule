@@ -7,7 +7,9 @@ A simple Lua filter that converts .docx horizontal rule output from the default 
 
   You can install the filter directly in the terminal with
     
-  `quarto install extension ttalVlatt/Quarto-Docx-Horizontal-Rule`
+  ```
+  quarto install extension ttalVlatt/Quarto-Docx-Horizontal-Rule
+  ```
 
   *This assumes your terminal is set to the same directory as your project/.qmd script*
 
