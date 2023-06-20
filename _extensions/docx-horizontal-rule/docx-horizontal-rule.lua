@@ -10,14 +10,16 @@
 -- major h/t to Tarleb https://stackoverflow.com/questions/76503253/how-can-you-take-quarto-yaml-metadata-and-use-it-as-a-value-in-lua-filter
 
 -- Create function to change line attributes by input attriubtes, which...
-local function change_color (color_picked)
+local function change_color (color_picked, style_picked, width_picked)
   -- ...has a next function within it with input el (for elements), which...
   return function (el)
     -- ...if true is true (which it will be)...
     if true then
-      -- 1) assigns color_picked to color (see below)...
+      -- 1) assigns attribute_picked to attribute (see below)...
      local color = pandoc.utils.stringify(color_picked)
-      -- 2) assigns the word xml to modify horizontal rules to horizontallinerule
+     local style = pandoc.utils.stringify(style_picked)
+     local width = pandoc.utils.stringify(width_picked)
+      -- 3) assigns the word xml to modify horizontal rules to horizontallinerule
       -- which is modified by placeholders "%s" being replaced with color
      local horizontallinerule = string.format([[<w:p>
       <w:pPr>
@@ -25,13 +27,13 @@ local function change_color (color_picked)
           <w:ind w:firstLine="0"/>
           <w:jc w:val="center"/>
         <w:pBdr>
-          <w:bottom w:val="triple" w:color="%s"/>
+          <w:bottom w:val="%s" w:color="%s" w:sz="%s"/>
         </w:pBdr>
       </w:pPr>
       <w:r>
         <w:t></w:t>
       </w:r>
-    </w:p>]], color)
+    </w:p>]], style, color, width)
       -- Inner function returns the openxml with horizontallinerule added
       return {
         pandoc.RawBlock('openxml', horizontallinerule)
@@ -47,10 +49,12 @@ end -- End of change_color function
 function Pandoc (doc)
   -- ...takes docxhrcolor from the meta and assigns to color_choice,
   -- unless not supplied in which case uses dark grey, then...
-  local color_choice = doc.meta['docxhrcolor'] or "5A5A5A"
+  local color_choice = doc.meta['docxhrcolor'] or "000000"
+  local style_choice = doc.meta['docxhrstyle'] or "single"
+  local width_choice = doc.meta['docxhrwidth'] or "10"
   -- ...modifies the HorizontalRule in the doc using the first function and
   -- inputs taken from the document meta data
   return doc:walk {
-    HorizontalRule = change_color(color_choice),
+    HorizontalRule = change_color(color_choice, style_choice, width_choice),
   }
 end -- Phew!

@@ -3,7 +3,6 @@ title: "Testing"
 format: docx
 filters:
   - docx-horizontal-rule
-docxhrcolor: FFA500
 ---
 
 Let's see if the filter is working properly
