@@ -9,18 +9,16 @@
 -- h/t https://gist.github.com/Merovex/05e3216f8f4f6e965cd9d564b1496719
 -- major h/t to Tarleb https://stackoverflow.com/questions/76503253/how-can-you-take-quarto-yaml-metadata-and-use-it-as-a-value-in-lua-filter
 
--- Create function to change line attributes by input attriubtes, which...
+-- Create function to change rule attributes with input attriubtes, which...
 local function change_attributes (color_picked, style_picked, width_picked)
-  -- ...has a next function within it with input el (for elements), which...
+  -- ...has a nested function within it with input el (for elements), which...
   return function (el)
-    -- ...if true is true (which it will be)...
-    if true then
       -- 1) assigns attribute_picked to attribute (see below)...
      local color = pandoc.utils.stringify(color_picked)
      local style = pandoc.utils.stringify(style_picked)
      local width = pandoc.utils.stringify(width_picked)
-      -- 3) assigns the word xml to modify horizontal rules to horizontallinerule
-      -- which is modified by placeholders "%s" being replaced with color
+      -- 2) modifies the .docx xml by placeholders "%s" being replaced with 
+      -- attributes and assigns to horizontallinerule
      local horizontallinerule = string.format([[<w:p>
       <w:pPr>
         <w:pStyle w:val="HorizontalRule"/>
@@ -34,11 +32,10 @@ local function change_attributes (color_picked, style_picked, width_picked)
         <w:t></w:t>
       </w:r>
     </w:p>]], style, color, width)
-      -- Inner function returns the openxml with horizontallinerule added
+      -- 3) Returns the openxml with horizontallinerule added
       return {
         pandoc.RawBlock('openxml', horizontallinerule)
       }
-    end -- End of the then trigger statement
   end -- End of inner function
 end -- End of change_color function
 
@@ -47,8 +44,10 @@ end -- End of change_color function
 
 -- Function with input doc (for pandoc document), which...
 function Pandoc (doc)
-  -- ...takes docxhrcolor from the meta and assigns to color_choice,
-  -- unless not supplied in which case uses dark grey, then...
+  -- ...if the format is docx, then...
+  if FORMAT == 'docx' then
+  -- ...takes docx-hr-attributes from the meta and assigns to attribute_choice,
+  -- unless not supplied in which case uses black, single, 0.5pt, then...
   local color_choice = doc.meta['docx-hr-color'] or "000000"
   local style_choice = doc.meta['docx-hr-style'] or "single"
   local width_choice = doc.meta['docx-hr-width'] or "10"
@@ -57,4 +56,5 @@ function Pandoc (doc)
   return doc:walk {
     HorizontalRule = change_attributes(color_choice, style_choice, width_choice),
   }
+  end -- End docx if statement
 end -- Phew!
