@@ -37,7 +37,7 @@ local function change_attributes (color_picked, style_picked, width_picked)
         pandoc.RawBlock('openxml', horizontallinerule)
       }
   end -- End of inner function
-end -- End of change_color function
+end -- End of change_attributes function
 
 -- Create second function that takes choices from the supplied YAML metadata
 -- and then uses them in the first function to modify the Pandoc output
