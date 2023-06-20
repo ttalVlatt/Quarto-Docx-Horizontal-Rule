@@ -3,7 +3,7 @@ A simple Lua filter that converts .docx horizontal rule output from the default 
 
 ### To use this filter 
 
-  1. Ensure the Docx-Horizontal-Rule file is in your _extensions
+  1. Ensure the Docx-Horizontal-Rule file is in your _extensions folder
 
   2. Add the horizontal rule to your markdown
 
