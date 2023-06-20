@@ -1,0 +1,15 @@
+---
+title: "Testing"
+format: docx
+filters:
+  - docx-horizontal-rule
+docx-hr-color: FF69B4
+docx-hr-style: triple
+docx-hr-width: 30
+---
+
+Let's see if the filter is working properly
+
+---
+
+Is that changing with the options we set?
