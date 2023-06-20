@@ -10,7 +10,7 @@
 -- major h/t to Tarleb https://stackoverflow.com/questions/76503253/how-can-you-take-quarto-yaml-metadata-and-use-it-as-a-value-in-lua-filter
 
 -- Create function to change line attributes by input attriubtes, which...
-local function change_color (color_picked, style_picked, width_picked)
+local function change_attributes (color_picked, style_picked, width_picked)
   -- ...has a next function within it with input el (for elements), which...
   return function (el)
     -- ...if true is true (which it will be)...
@@ -49,12 +49,12 @@ end -- End of change_color function
 function Pandoc (doc)
   -- ...takes docxhrcolor from the meta and assigns to color_choice,
   -- unless not supplied in which case uses dark grey, then...
-  local color_choice = doc.meta['docxhrcolor'] or "000000"
-  local style_choice = doc.meta['docxhrstyle'] or "single"
-  local width_choice = doc.meta['docxhrwidth'] or "10"
+  local color_choice = doc.meta['docx-hr-color'] or "000000"
+  local style_choice = doc.meta['docx-hr-style'] or "single"
+  local width_choice = doc.meta['docx-hr-width'] or "10"
   -- ...modifies the HorizontalRule in the doc using the first function and
   -- inputs taken from the document meta data
   return doc:walk {
-    HorizontalRule = change_color(color_choice, style_choice, width_choice),
+    HorizontalRule = change_attributes(color_choice, style_choice, width_choice),
   }
 end -- Phew!

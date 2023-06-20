@@ -3,6 +3,9 @@ title: "Testing"
 format: docx
 filters:
   - docx-horizontal-rule
+docx-hr-color: Fa4616
+docx-hr-style: double
+docx-hr-width: 15
 ---
 
 Let's see if the filter is working properly
